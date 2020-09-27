@@ -4,7 +4,9 @@
     --white: #f2efe4;
     --blue: #314455;
     --blueDark: #1e2933;
-    --darkGray: #424242;
+    --gray: #9c9c9c;
+    --grayDark: #727272;
+    --grayExtraDark: #424242;
 }
 * {
     box-sizing: border-box;
@@ -21,6 +23,22 @@ main {
     align-items: center;
     min-height: 100vh;
 }
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 2px #000000;
+}
+/* Classes */
+.flexbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+/*
+    - = * PropChooser * = -
+*/
 #propChooser {
     display: flex;
     padding: 1em;
@@ -40,6 +58,7 @@ main {
     grid-column-gap: 1em;
     grid-row-gap: 1em;
 }
+/* Input Fields */
 .gridBlock {
     width: 100%;
     display: flex;
@@ -64,12 +83,13 @@ main {
     font-weight: 500;
     text-shadow: 2px 2px 2px #000000;
 }
+/* Button */
 #buttonWrapper {
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
-#buttonWrapper button {
+#buttonWrapper .button {
     padding: 1em;
     width: 60%;
     font-size: 1.3rem;
@@ -83,18 +103,126 @@ main {
     transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
     cursor: pointer;
 }
-#buttonWrapper button:hover {
+#buttonWrapper .button:hover {
     background-color: var(--blueDark);
     letter-spacing: .05em;
 }
-#buttonWrapper button:focus {
+#buttonWrapper .button:focus {
     outline: none;
 }
-#seatChart {
+#buttonWrapper #gray {
+    color: var(--white);
+    text-shadow: 2px 2px 2px #212121;
+    border: 1px solid var(--grayDark);
+    background-color: var(--gray);
+    transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
 }
-h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-shadow: 2px 2px 2px #000000;
+#buttonWrapper #gray:hover {
+    background-color: var(--grayDark);
+}
+/*
+    - = * SeatChart * = -
+*/
+#seatChart {
+    display: flex;
+    padding: 1em;
+    min-height: 75vh; min-width: 60vw;
+    background-color: var(--bcSecondary);
+    border-radius: 6px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#seatChart .inner {
+    margin: 3em 0 1em 0;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+/* SeatChart Grid */
+#seatChart .inner .left {
+    margin: 1em;
+    height: auto;
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
+#seatChart .inner .left div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: var(--blueDark);
+}
+#seatChart .inner .left div::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+/* SeatChart Right */
+#seatChart .inner .right {
+    margin: 1em;
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+#seatChart .inner .right form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
+#seatChart .inner .right > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
+#seatChart .inner .right #buttonWrapper2 {
+    margin: 1em 0 0 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Button 2 */
+#buttonWrapper2 .button {
+    padding: 1em;
+    width: 100%;
+    font-size: 1.3rem;
+    color: var(--white);
+    border-radius: 4px;
+    letter-spacing: 0;
+    font-weight: 400;
+    text-shadow: 2px 2px 2px #212121;
+    border: 1px solid var(--blueDark);
+    background-color: var(--blue);
+    transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
+    cursor: pointer;
+}
+#buttonWrapper2 .button:hover {
+    background-color: var(--blueDark);
+    letter-spacing: .05em;
+}
+#buttonWrapper2 .button:focus {
+    outline: none;
+}
+#buttonWrapper2 #gray {
+    color: var(--white);
+    text-shadow: 2px 2px 2px #212121;
+    border: 1px solid var(--grayDark);
+    background-color: var(--gray);
+    transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
+}
+#buttonWrapper2 #gray:hover {
+    background-color: var(--grayDark);
 }
