@@ -1,9 +1,19 @@
+:root {
+    --bc: #f2efe4;
+    --bcSecondary: #d63d31;
+    --white: #f2efe4;
+    --blue: #314455;
+    --blueDark: #1e2933;
+    --darkGray: #424242;
+}
+* {
+    box-sizing: border-box;
+}
 html, body {
-    position: relative;
     margin: 0;
-    font-family: 'Roboto', sans-serif;;
     color: white;
-    -webkit-text-stroke: 1px black;
+    background-color: var(--bc);
+    font-family: 'Roboto', sans-serif;
 }
 main {
     display: flex;
@@ -12,16 +22,80 @@ main {
     min-height: 100vh;
 }
 #propChooser {
-    background-color: #E62401;
-    height: 50vh; width: 50vw;
+    display: flex;
+    padding: 1em;
+    height: 65vh; width: 50vw;
+    background-color: var(--bcSecondary);
+    border-radius: 6px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 #propChooser form {
+    width: 80%;
+    margin: 3em 0 1em 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    grid-column-gap: 1em;
+    grid-row-gap: 1em;
+}
+.gridBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.gridBlock input {
+    padding: 1em;
+    width: 100%;
+    font-size: 1.3rem;
+    border-radius: 4px;
+    border: 1px solid #424242;
+    font-weight: 500;
+}
+.gridBlock input:focus {
+    outline: none;
+}
+.gridBlock label {
+    margin: 0 0 .5em 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-shadow: 2px 2px 2px #000000;
+}
+#buttonWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+#buttonWrapper button {
+    padding: 1em;
+    width: 60%;
+    font-size: 1.3rem;
+    color: var(--white);
+    border-radius: 4px;
+    letter-spacing: 0;
+    font-weight: 400;
+    text-shadow: 2px 2px 2px #212121;
+    border: 1px solid var(--blueDark);
+    background-color: var(--blue);
+    transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
+    cursor: pointer;
+}
+#buttonWrapper button:hover {
+    background-color: var(--blueDark);
+    letter-spacing: .05em;
+}
+#buttonWrapper button:focus {
+    outline: none;
 }
 #seatChart {
     visibility: hidden;
 }
 h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-shadow: 2px 2px 2px #000000;
 }
