@@ -15,17 +15,17 @@
         <form>
             <div class="gridBlock">
                 <label for="seatHeight">Height:</label>
-                <input id="seatHeight">
+                <input type="number" class="number" id="seatHeight" onkeydown="return event.keyCode !== 69">
             </div>
             <div class="gridBlock">
                 <!-- Empty For Now -->
             </div>
             <div class="gridBlock">
                 <label for="seatWidth">Width:</label>
-                <input id="seatWidth">
+                <input type="number" class="number" id="seatWidth">
             </div>
             <div id="buttonWrapper">
-                <button>Next <i class="uil uil-angle-right-b"></i></button>
+                <button type="button" id="goToSeatChart">Next <i class="uil uil-angle-right-b"></i></button>
             </div>
         </form>
     </div>

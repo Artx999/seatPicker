@@ -91,7 +91,6 @@ main {
     outline: none;
 }
 #seatChart {
-    visibility: hidden;
 }
 h1 {
     margin: 0;
