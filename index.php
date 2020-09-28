@@ -10,25 +10,25 @@
 </head>
 <body>
 <main>
-    <!--<div id="propChooser">
+    <div id="propChooser">
         <h1>How will your layout be?</h1>
         <form>
             <div class="gridBlock">
                 <label for="seatHeight">Height:</label>
                 <input type="number" class="number" id="seatHeight" onkeydown="return event.keyCode !== 69">
             </div>
-            <div class="gridBlock">-->
+            <div class="gridBlock">
                 <!-- Empty For Now -->
-            <!--</div>
+            </div>
             <div class="gridBlock">
                 <label for="seatWidth">Width:</label>
                 <input type="number" class="number" id="seatWidth">
             </div>
             <div id="buttonWrapper">
-                <button type="button" id="goToSeatChart">Next <i class="uil uil-angle-right-b"></i></button>
+                <button type="button" class="button" id="goToSeatChart">Next <i class="uil uil-angle-right-b"></i></button>
             </div>
         </form>
-    </div>-->
+    </div>
     <div id="seatChart">
         <h1>Pick seats between?</h1>
         <div class="inner">
