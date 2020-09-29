@@ -1,3 +1,46 @@
+let $blackListBtn = $("#blacklistBtn");
+// Colors
+let $seatChart = $("#seatChart");
+
+$blackListBtn.on('click', '#white', function () {
+    // Colors
+    $("#white").attr("id", "black").text('Whitelist');
+    // Page
+});
+
+$blackListBtn.on('click', '#black', function () {
+    // Colors
+    $("#black").attr("id", "white").text('Blacklist');
+    // Page
+});
+/*
+$blackListBtn.click(function(event) {
+
+    event.stopPropagation();
+
+    if ($blackListBtn.hasClass('active')) {
+        // Toggle
+        $blackListBtn.toggleClass('active');
+        // Colors
+        $white.attr("id", "black");
+        $whiteSec.attr("id", "blackSec");
+        $white.text('Blacklist');
+        // Page
+        $seatChart.css("background-color", "var(--bcBlack)");
+    } else if (!$blackListBtn.hasClass('active')) {
+        // Toggle
+        $blackListBtn.toggleClass('active');
+        // Colors
+        $black.attr("id", "white");
+        $blackSec.attr("id", "whiteSec");
+        $black.text('Whitelist');
+        // Page
+        $seatChart.css("background-color", "var(--white)");
+    }
+});
+*/
+
+
 $("#seatChart").toggle()
 
 let goToSeatChart = $("#goToSeatChart")
@@ -6,8 +49,8 @@ goToSeatChart.click(function () {
     let height = $("#seatHeight").val()
     let width = $("#seatWidth").val()
     if (height && width) {
-        $("#propChooser").toggle(1000)
-        $("#seatChart").toggle(1000)
+        $("#propChooser").toggle(0)
+        $("#seatChart").toggle(0)
         let seat = $("#seatChart .inner .left")
         seat.css("grid-template-columns", "repeat(" + width +", 1fr)")
         let amount = height * width

@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="HTML,CSS,JavaScript,PHP">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -25,7 +28,7 @@
                 <input type="number" class="number" id="seatWidth" max="16">
             </div>
             <div id="buttonWrapper">
-                <button type="button" class="button" id="goToSeatChart">Next <i class="uil uil-angle-right-b"></i></button>
+                <button id="goToSeatChart" class="button btn-primary" type="button">Next <i class="uil uil-angle-right-b"></i><div class="btn-secondary"></div></button>
             </div>
         </form>
     </div>
@@ -39,13 +42,16 @@
                         <label for="howMany">How many?</label>
                         <input id="howMany" placeholder="0">
                     </div>
+                    <div id="blacklistBtn" class="gridBlock2">
+                        <button id="black" class="button btn-primary" type="button">Whitelist</button>
+                    </div>
                 </form>
                 <div>
-                    <div id="buttonWrapper2">
-                        <button id="start" class="button">Start <i class="uil uil-angle-right-b"></i></button>
+                    <div class="buttonWrapper2">
+                        <button id="start" class="button btn-primary" type="button">Start <i class="uil uil-angle-right-b"></i><div class="btn-secondary"></div></button>
                     </div>
-                    <div id="buttonWrapper2">
-                        <button id="gray" class="button">Exit <i class="uil uil-times"></i></button>
+                    <div class="buttonWrapper2">
+                        <button id="red" class="button btn-primary" type="button">Exit <i class="uil uil-times"></i><div id="redSec" class="btn-secondary"></div></button>
                     </div>
                 </div>
             </div>
