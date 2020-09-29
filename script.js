@@ -8,9 +8,17 @@ goToSeatChart.click(function () {
     if (height && width) {
         $("#propChooser").toggle(1000)
         $("#seatChart").toggle(1000)
+        let seat = $("#seatChart .inner .left")
+        seat.css("grid-template-columns", "repeat(" + width +", 1fr)")
+        let amount = height * width
+        for (let i = 1; i < amount + 1; i++) {
+            seat.append("<div class='flexbox'>" + i +"</div>")
+        }
     }
 })
-
+$(".number").on("keyup", function () {
+    if ($(".number").val() > 16) $(".number").val(16)
+})
 $(document).ready(function() {
     $(".number").inputFilter(function(value) {
         if (event.keyCode !== 69) {
