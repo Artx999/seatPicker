@@ -4,24 +4,14 @@ let $seatChart = $("#seatChart");
 
 $blackListBtn.on('click', '#white', function () {
     // Colors
-    $("#white").attr("id", "black").text('Blacklist');
+    $("#white").attr("id", "black").text('Whitelist');
     // Page
-    $("main").css("background-color", "var(--bc)");
-    $("h1").css("color", "var(--white)");
-    $(".gridBlock label").css("color", "var(--white)");
-    $seatChart.css("background-color", "var(--bcBlack)");
-    $seatChart.css("box-shadow", "0 5px 75px 0 rgba(0, 0, 0, .45)");
 });
 
 $blackListBtn.on('click', '#black', function () {
     // Colors
-    $("#black").attr("id", "white").text('Whitelist');
+    $("#black").attr("id", "white").text('Blacklist');
     // Page
-    $("main").css("background-color", "var(--bcBlack)");
-    $("h1").css("color", "var(--bcBlack)");
-    $(".gridBlock label").css("color", "var(--bcBlack)");
-    $seatChart.css("background-color", "var(--white)");
-    $seatChart.css("box-shadow", "0 5px 75px 0 rgba(255, 255, 255, .25)");
 });
 /*
 $blackListBtn.click(function(event) {

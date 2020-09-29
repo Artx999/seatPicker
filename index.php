@@ -45,7 +45,7 @@
                         <input id="seatHeight" placeholder="0">
                     </div>
                     <div id="blacklistBtn" class="gridBlock2">
-                        <button id="black" class="button btn-primary" type="button">Blacklist</button>
+                        <button id="black" class="button btn-primary" type="button">Whitelist</button>
                     </div>
                 </form>
                 <div>

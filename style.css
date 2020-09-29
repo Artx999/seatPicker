@@ -6,6 +6,7 @@
     --white: #f2efe4;
     --red: #fa485a;
     --redDark: #c73a48;
+    --yellow: #f8ab37;
     --blue: #1f2029;
     --blueDark: #1e2933;
     --green: #24e33a;
@@ -49,7 +50,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    color: var(--white);
+    color: var(--black);
     cursor: pointer;
 }
 /*
@@ -142,7 +143,7 @@ h1 {
     width: 100%;
     height: 100%;
     position: relative;
-    background-color: var(--blue);
+    background-color: var(--white);
 }
 #seatChart .inner .left div::after {
     content: "";
@@ -202,7 +203,7 @@ h1 {
     background: var(--gradient);
     background-size: 1100%;
     border-radius: 4px;
-    border: none;
+    border: 2px solid var(--black);
     transform: scaleX(1);
     transition: transform .3s cubic-bezier(.175,.885,.32,1.275),background-position 3s cubic-bezier(.455,.03,.515,.955),-webkit-transform .3s cubic-bezier(.175,.885,.32,1.275);
 }
@@ -249,4 +250,5 @@ h1 {
 #white, #whiteSec {
     color: var(--white);
     background: var(--gradientBlack);
+    border: 2px solid var(--white);
 }
