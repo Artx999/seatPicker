@@ -6,8 +6,8 @@ goToSeatChart.click(function () {
     let height = $("#seatHeight").val()
     let width = $("#seatWidth").val()
     if (height && width) {
-        $("#propChooser").toggle(1000)
-        $("#seatChart").toggle(1000)
+        $("#propChooser").toggle(0)
+        $("#seatChart").toggle(0)
         let seat = $("#seatChart .inner .left")
         seat.css("grid-template-columns", "repeat(" + width +", 1fr)")
         let amount = height * width
