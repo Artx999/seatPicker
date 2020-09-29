@@ -12,12 +12,21 @@ goToSeatChart.click(function () {
         seat.css("grid-template-columns", "repeat(" + width +", 1fr)")
         let amount = height * width
         for (let i = 1; i < amount + 1; i++) {
-            seat.append("<div class='flexbox'>" + i +"</div>")
+            seat.append("<div id='" + i + "' class='seat flexbox'>" + i +"</div>")
         }
     }
 })
-$(".number").on("keyup", function () {
-    if ($(".number").val() > 16) $(".number").val(16)
+// Max input 16
+let number = $(".number")
+number.keyup(function () {
+    $(this).each(function () {
+        if ($(this).val() > 16) $(this).val(16)
+    })
+})
+
+// Filters on .number
+$(".number").keydown(function () {
+    return event.keyCode !== 69
 })
 $(document).ready(function() {
     $(".number").inputFilter(function(value) {
@@ -42,3 +51,33 @@ $(document).ready(function() {
         });
     };
 }(jQuery));
+
+// Pick seats
+let filter = []
+let seatHis = []
+
+$("body").on("click", ".seat", function () {
+    $(this).css("background-color", "green")
+    filter.push($(this)[0].id)
+    filter.sort()
+    console.log(filter)
+})
+start = $("#start")
+start.click(function () {
+    $(".seat").css("background-color", "var(--blueDark)")
+    for (let i = $("#howMany").val(); i !== 0; i--) {
+        let num = getRndInt(0, filter.length)
+        let seat = filter[num]
+        if (seatHis.includes(seat)) {
+            i ++
+            continue
+        }
+        seatHis.push(seat)
+        $("#" + seat).css("background-color", "green")
+    }
+    console.log(seatHis)
+    seatHis = []
+})
+function getRndInt(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
