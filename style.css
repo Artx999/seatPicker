@@ -35,6 +35,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+    cursor: pointer;
 }
 /*
     - = * PropChooser * = -
@@ -187,7 +188,7 @@ h1 {
     grid-column-gap: 1em;
     grid-row-gap: 1em;
 }
-#seatChart .inner .right #buttonWrapper2 {
+#seatChart .inner .right .buttonWrapper2 {
     margin: 1em 0 0 0;
     width: 100%;
     display: flex;
@@ -195,7 +196,7 @@ h1 {
     align-items: center;
 }
 /* Button 2 */
-#buttonWrapper2 .button {
+.buttonWrapper2 .button {
     padding: 1em;
     width: 100%;
     font-size: 1.3rem;
@@ -209,20 +210,20 @@ h1 {
     transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
     cursor: pointer;
 }
-#buttonWrapper2 .button:hover {
+.buttonWrapper2 .button:hover {
     background-color: var(--blueDark);
     letter-spacing: .05em;
 }
-#buttonWrapper2 .button:focus {
+.buttonWrapper2 .button:focus {
     outline: none;
 }
-#buttonWrapper2 #gray {
+.buttonWrapper2 #gray {
     color: var(--white);
     text-shadow: 2px 2px 2px #212121;
     border: 1px solid var(--grayDark);
     background-color: var(--gray);
     transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
 }
-#buttonWrapper2 #gray:hover {
+.buttonWrapper2 #gray:hover {
     background-color: var(--grayDark);
 }

@@ -82,20 +82,15 @@
                         <label for="seatHeight">How many?</label>
                         <input id="seatHeight" placeholder="0">
                     </div>
-                    <div class="gridBlock">
-                        <label for="seatWidth">From</label>
-                        <input id="seatWidth" placeholder="0">
-                    </div>
-                    <div class="gridBlock">
-                        <label for="seatWidth">To</label>
-                        <input id="seatWidth" placeholder="0">
+                    <div class="gridBlock buttonWrapper2">
+                        <button class="button">Blacklist</button>
                     </div>
                 </form>
                 <div>
-                    <div id="buttonWrapper2">
+                    <div class="buttonWrapper2">
                         <button class="button">Start <i class="uil uil-angle-right-b"></i></button>
                     </div>
-                    <div id="buttonWrapper2">
+                    <div class="buttonWrapper2">
                         <button id="gray" class="button">Exit <i class="uil uil-times"></i></button>
                     </div>
                 </div>
