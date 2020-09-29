@@ -18,7 +18,7 @@
         <form>
             <div class="gridBlock">
                 <label for="seatHeight">Height:</label>
-                <input type="number" class="number" id="seatHeight" onkeydown="return event.keyCode !== 69">
+                <input type="number" class="number" id="seatHeight" max="16">
             </div>
             <div class="gridBlock">
                 <!-- Empty For Now -->
@@ -35,14 +35,12 @@
     <div id="seatChart">
         <h1>Pick seats between?</h1>
         <div class="inner">
-            <div class="left">
-
-            </div>
+            <div class="left"></div>
             <div class="right">
                 <form>
                     <div class="gridBlock">
-                        <label for="seatHeight">How many?</label>
-                        <input id="seatHeight" placeholder="0">
+                        <label for="howMany">How many?</label>
+                        <input id="howMany" placeholder="0">
                     </div>
                     <div id="blacklistBtn" class="gridBlock2">
                         <button id="black" class="button btn-primary" type="button">Whitelist</button>
@@ -50,7 +48,7 @@
                 </form>
                 <div>
                     <div class="buttonWrapper2">
-                        <button class="button btn-primary" type="button">Start <i class="uil uil-angle-right-b"></i><div class="btn-secondary"></div></button>
+                        <button id="start" class="button btn-primary" type="button">Start <i class="uil uil-angle-right-b"></i><div class="btn-secondary"></div></button>
                     </div>
                     <div class="buttonWrapper2">
                         <button id="red" class="button btn-primary" type="button">Exit <i class="uil uil-times"></i><div id="redSec" class="btn-secondary"></div></button>
