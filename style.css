@@ -27,14 +27,14 @@
 html, body {
     margin: 0;
     color: white;
-    background-color: var(--bc);
     font-family: 'Roboto', sans-serif;
 }
 main {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    background-color: var(--bc);
 }
 h1 {
     margin: 0;
@@ -242,4 +242,8 @@ h1 {
 #black, #blackSec {
     color: var(--bcBlack);
     background: var(--gradientWhite);
+}
+#white, #whiteSec {
+    color: var(--white);
+    background: var(--gradientBlack);
 }

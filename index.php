@@ -44,8 +44,8 @@
                         <label for="seatHeight">How many?</label>
                         <input id="seatHeight" placeholder="0">
                     </div>
-                    <div class="gridBlock2">
-                        <button id="black" class="button btn-primary" type="button">Blacklist<div id="blackSec" class="btn-secondary"></div></button>
+                    <div id="blacklistBtn" class="gridBlock2">
+                        <button id="black" class="button btn-primary" type="button">Blacklist</button>
                     </div>
                 </form>
                 <div>

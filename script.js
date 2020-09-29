@@ -1,3 +1,52 @@
+let $blackListBtn = $("#blacklistBtn");
+// Colors
+let $seatChart = $("#seatChart");
+
+$blackListBtn.on('click', '#white', function () {
+    // Colors
+    $("#white").attr("id", "black").text('Blacklist');
+    // Page
+    $("main").css("background-color", "var(--bc)");
+    $seatChart.css("background-color", "var(--bcBlack)");
+    $seatChart.css("box-shadow", "0 5px 75px 0 rgba(0, 0, 0, .45)");
+});
+
+$blackListBtn.on('click', '#black', function () {
+    // Colors
+    $("#black").attr("id", "white").text('Whitelist');
+    // Page
+    $("main").css("background-color", "var(--bcBlack)");
+    $seatChart.css("background-color", "var(--white)");
+    $seatChart.css("box-shadow", "0 5px 75px 0 rgba(255, 255, 255, .25)");
+});
+/*
+$blackListBtn.click(function(event) {
+
+    event.stopPropagation();
+
+    if ($blackListBtn.hasClass('active')) {
+        // Toggle
+        $blackListBtn.toggleClass('active');
+        // Colors
+        $white.attr("id", "black");
+        $whiteSec.attr("id", "blackSec");
+        $white.text('Blacklist');
+        // Page
+        $seatChart.css("background-color", "var(--bcBlack)");
+    } else if (!$blackListBtn.hasClass('active')) {
+        // Toggle
+        $blackListBtn.toggleClass('active');
+        // Colors
+        $black.attr("id", "white");
+        $blackSec.attr("id", "whiteSec");
+        $black.text('Whitelist');
+        // Page
+        $seatChart.css("background-color", "var(--white)");
+    }
+});
+*/
+
+
 $("#seatChart").toggle()
 
 let goToSeatChart = $("#goToSeatChart")
