@@ -7,6 +7,7 @@
     --gray: #9c9c9c;
     --grayDark: #727272;
     --grayExtraDark: #424242;
+    --black: #010101;
 }
 * {
     box-sizing: border-box;
@@ -175,7 +176,7 @@ h1 {
 #seatChart .inner .right form {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 1em;
     grid-row-gap: 1em;
@@ -195,8 +196,15 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+.gridBlock2 {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
 /* Button 2 */
-.buttonWrapper2 .button {
+.button {
     padding: 1em;
     width: 100%;
     font-size: 1.3rem;
@@ -210,20 +218,30 @@ h1 {
     transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
     cursor: pointer;
 }
-.buttonWrapper2 .button:hover {
+.button:hover {
     background-color: var(--blueDark);
     letter-spacing: .05em;
 }
-.buttonWrapper2 .button:focus {
+.button:focus {
     outline: none;
 }
-.buttonWrapper2 #gray {
+#gray {
     color: var(--white);
     text-shadow: 2px 2px 2px #212121;
     border: 1px solid var(--grayDark);
     background-color: var(--gray);
     transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
 }
-.buttonWrapper2 #gray:hover {
+#gray:hover {
     background-color: var(--grayDark);
+}
+#black {
+    color: var(--white);
+    text-shadow: 2px 2px 2px #212121;
+    border: 1px solid var(--black);
+    background-color: var(--black);
+    transition: background-color .35s cubic-bezier(.175,.685,.32,1.175), letter-spacing .35s cubic-bezier(.175,.685,.32,1.175);
+}
+#black:hover {
+    background-color: var(--grayExtraDark);
 }
