@@ -100,14 +100,14 @@ let filter = []
 let seatHis = []
 
 $("body").on("click", ".seat", function () {
-    $(this).css("background-color", "green")
+    $(this).css("background-color", "var(--green)")
     filter.push($(this)[0].id)
     filter.sort()
     console.log(filter)
 })
 start = $("#start")
 start.click(function () {
-    $(".seat").css("background-color", "var(--blueDark)")
+    $(".seat").css("background-color", "var(--white)")
     for (let i = $("#howMany").val(); i !== 0; i--) {
         let num = getRndInt(0, filter.length)
         let seat = filter[num]
@@ -116,7 +116,7 @@ start.click(function () {
             continue
         }
         seatHis.push(seat)
-        $("#" + seat).css("background-color", "green")
+        $("#" + seat).css("background-color", "var(--green)")
     }
     console.log(seatHis)
     seatHis = []
