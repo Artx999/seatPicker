@@ -25,7 +25,7 @@
             </div>
             <div class="gridBlock">
                 <label for="seatWidth">Width:</label>
-                <input type="number" class="number" id="seatWidth">
+                <input type="number" class="number" id="seatWidth" max="16">
             </div>
             <div id="buttonWrapper">
                 <button id="goToSeatChart" class="button btn-primary" type="button">Next <i class="uil uil-angle-right-b"></i><div class="btn-secondary"></div></button>

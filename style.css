@@ -134,7 +134,7 @@ h1 {
     height: auto;
     width: 50%;
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    /* grid-template-columns: repeat(10, 1fr); <--- Important !  */
     grid-template-rows: repeat(auto-fill, 1fr);
     grid-column-gap: 1em;
     grid-row-gap: 1em;
