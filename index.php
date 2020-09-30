@@ -5,7 +5,8 @@
     <meta name="description" content="">
     <meta name="keywords" content="HTML,CSS,JavaScript,PHP">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Seat Picker</title>
+    <link rel="icon" href="icon.png">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/jquery.color-animation/1/mainfile"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
