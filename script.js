@@ -1,56 +1,26 @@
-let $blackListBtn = $("#blacklistBtn");
-// Colors
-let $seatChart = $("#seatChart");
+//
+$("#seatChart").toggle()
 
+
+// Blacklist / whitelist btn
+let $blackListBtn = $("#blacklistBtn");
 $blackListBtn.on('click', '#white', function () {
-    // Colors
     $("#white").attr("id", "black").text('Whitelist');
-    // Page
 });
 
 $blackListBtn.on('click', '#black', function () {
-    // Colors
     $("#black").attr("id", "white").text('Blacklist');
-    // Page
 });
-/*
-$blackListBtn.click(function(event) {
-
-    event.stopPropagation();
-
-    if ($blackListBtn.hasClass('active')) {
-        // Toggle
-        $blackListBtn.toggleClass('active');
-        // Colors
-        $white.attr("id", "black");
-        $whiteSec.attr("id", "blackSec");
-        $white.text('Blacklist');
-        // Page
-        $seatChart.css("background-color", "var(--bcBlack)");
-    } else if (!$blackListBtn.hasClass('active')) {
-        // Toggle
-        $blackListBtn.toggleClass('active');
-        // Colors
-        $black.attr("id", "white");
-        $blackSec.attr("id", "whiteSec");
-        $black.text('Whitelist');
-        // Page
-        $seatChart.css("background-color", "var(--white)");
-    }
-});
-*/
 
 
-$("#seatChart").toggle()
-
+// Go to seatChart
 let goToSeatChart = $("#goToSeatChart")
-
 goToSeatChart.click(function () {
     let height = $("#seatHeight").val()
     let width = $("#seatWidth").val()
     if (height && width) {
-        $("#propChooser").toggle(0)
-        $("#seatChart").toggle(0)
+        $("#propChooser").toggle(10)
+        $("#seatChart").toggle(10)
         let seat = $("#seatChart .inner .left")
         seat.css("grid-template-columns", "repeat(" + width +", 1fr)")
         let amount = height * width
@@ -59,6 +29,8 @@ goToSeatChart.click(function () {
         }
     }
 })
+
+
 // Max input 16
 let number = $(".number")
 number.keyup(function () {
@@ -67,8 +39,9 @@ number.keyup(function () {
     })
 })
 
+
 // Filters on .number
-$(".number").keydown(function () {
+number.keydown(function () {
     return event.keyCode !== 69
 })
 $(document).ready(function() {
@@ -95,6 +68,7 @@ $(document).ready(function() {
     };
 }(jQuery));
 
+
 // Pick seats
 let filter = []
 let seatHis = []
@@ -106,21 +80,47 @@ $("body").on("click", ".seat", function () {
     console.log(filter)
 })
 start = $("#start")
-start.click(function () {
-    $(".seat").css("background-color", "var(--white)")
-    for (let i = $("#howMany").val(); i !== 0; i--) {
-        let num = getRndInt(0, filter.length)
-        let seat = filter[num]
-        if (seatHis.includes(seat)) {
-            i ++
-            continue
-        }
-        seatHis.push(seat)
-        $("#" + seat).css("background-color", "var(--green)")
+start.click(async function () {
+    let howMany = $("#howMany").val()
+    if (howMany) {
+        $(".seat").css("background-color", "var(--white)")
+            for (let i = howMany; i !== 0; i--) {
+                let num = getRndInt(0, filter.length)
+                let seat = filter[num]
+                if (seatHis.includes(seat)) {
+                    i ++
+                    continue
+                }
+                seatHis.push(seat)
+                $("#" + seat).css("background-color", "var(--green)")
+            }
+            console.log(seatHis)
+            seatHis = []
     }
-    console.log(seatHis)
-    seatHis = []
 })
+
+
+// Play music
+async function playMusic(type) {
+    $.post(
+        'audio/getRandomFile.php?type=' + type,
+        async function( result ){
+            let music = new Audio("audio/" + type + "/" + result)
+            await music.play()
+        },
+        'json'
+    );
+}
+async function listen() {
+    await playMusic("reveal")
+}
+$(document).click(function () {
+    listen()
+})
+
+// Random int
 function getRndInt(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
+}
+function randomFile($dir = 'audio/animation') {
 }
