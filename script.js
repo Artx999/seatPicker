@@ -1,7 +1,6 @@
 //
 $("#seatChart").toggle()
 
-
 // Blacklist / whitelist btn
 let blacklist = false
 let whitelist = true
@@ -149,6 +148,7 @@ start.click(function () {
                     getMusic("reveal", function (music) {
                         let audio = new Audio(music)
                         $(audio).on("ended", function () {
+                            bgMusic.play()
                         })
                         audio.play()
                     })
@@ -156,9 +156,14 @@ start.click(function () {
                 console.log(seatHis)
                 seatHis = []
             })
+            bgMusic.pause()
             audio.play()
         })
     }
+    bgMusic.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
 })
 
 
@@ -176,6 +181,10 @@ function getMusic(type, callback) {
     );
 }
 let bgMusic = new Audio("audio/bg/Wii_Shop_Channel_Main_Theme_HQ.mp3")
+$(document).click(function () {
+    bgMusic.play()
+    bgMusic.loop = true
+})
 $(document).click(function () {
 })
 function playMusic(type) {
