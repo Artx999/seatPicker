@@ -3,13 +3,22 @@ $("#seatChart").toggle()
 
 
 // Blacklist / whitelist btn
+let blacklist = false
+let whitelist = true
+let filterMode = whitelist
 let $blackListBtn = $("#blacklistBtn");
 $blackListBtn.on('click', '#white', function () {
     $("#white").attr("id", "black").text('Whitelist');
+    filterMode = whitelist
+    $(".seat").css("background-color", "white")
+    filter = []
 });
 
 $blackListBtn.on('click', '#black', function () {
     $("#black").attr("id", "white").text('Blacklist');
+    filterMode = blacklist
+    $(".seat").css("background-color", "var(--green)")
+    filter = []
 });
 
 
@@ -72,55 +81,118 @@ $(document).ready(function() {
 // Pick seats
 let filter = []
 let seatHis = []
+let colors = ['218, 44, 77', '253, 126, 20', '248, 171, 55', '40, 167, 69', '36, 227, 58', '32, 201, 151', '23, 162, 184', '0, 123, 255', '102, 16, 242', '111, 66, 193', '232, 62, 140']
 
 $("body").on("click", ".seat", function () {
-    $(this).css("background-color", "var(--green)")
-    filter.push($(this)[0].id)
-    filter.sort()
-    console.log(filter)
+    if (filterMode) {
+        if (filter.indexOf(this.id) === -1) {
+            $(this).css("background-color", "var(--green)")
+            filter.push($(this)[0].id)
+            filter.sort()
+            console.log(filter)
+        }
+        else {
+            $(this).css("background-color", "var(--white)")
+            filter.splice(filter.indexOf(this), 1)
+            console.log(filter)
+        }
+    }
+    else {
+        if (filter.indexOf(this.id) === -1) {
+            $(this).css("background-color", "white")
+            filter.push($(this)[0].id)
+            filter.sort()
+            console.log(filter)
+        }
+        else {
+            $(this).css("background-color", "var(--green)")
+            filter.splice(filter.indexOf(this), 1)
+            console.log(filter)
+        }
+    }
 })
 start = $("#start")
-start.click(async function () {
+start.click(function () {
     let howMany = $("#howMany").val()
     if (howMany) {
-        $(".seat").css("background-color", "var(--white)")
-            for (let i = howMany; i !== 0; i--) {
-                let num = getRndInt(0, filter.length)
-                let seat = filter[num]
-                if (seatHis.includes(seat)) {
-                    i ++
-                    continue
+        getMusic("animation", function (music) {
+            $(".seat").css("background-color", "var(--white)")
+            let audio = new Audio(music)
+            $(audio).on("playing", async function () {
+                let playing = true
+                while (playing) {
+                    for (let i = howMany; i !== 0; i--) {
+                        if (!playing) break
+                        let num = getRndInt(0, filter.length)
+                        let seat = filter[num]
+                        $("#" + seat).css({backgroundColor: 'rgb(' + colors[(Math.random() * colors.length) | 0] + ')'})
+                    }
+                    await sleep(250)
+                    $(".seat").css({backgroundColor: "var(--white)"})
+                    $(audio).on("ended", function () {
+                        playing = false
+                    })
                 }
-                seatHis.push(seat)
-                $("#" + seat).css("background-color", "var(--green)")
-            }
-            console.log(seatHis)
-            seatHis = []
+            })
+            $(audio).on("ended", async function () {
+                $(".seat").css("background-color", "var(--white)")
+                await sleep(1000)
+                for (let i = howMany; i !== 0; i--) {
+                    let num = getRndInt(0, filter.length)
+                    let seat = filter[num]
+                    if (seatHis.includes(seat)) {
+                        i ++
+                        continue
+                    }
+                    seatHis.push(seat)
+                    $("#" + seat).css("background-color", "var(--green)")
+                    getMusic("reveal", function (music) {
+                        let audio = new Audio(music)
+                        $(audio).on("ended", function () {
+                        })
+                        audio.play()
+                    })
+                }
+                console.log(seatHis)
+                seatHis = []
+            })
+            audio.play()
+        })
     }
 })
 
 
 // Play music
-async function playMusic(type) {
+function getMusic(type, callback) {
     $.post(
         'audio/getRandomFile.php?type=' + type,
-        async function( result ){
-            let music = new Audio("audio/" + type + "/" + result)
-            await music.play()
+        function(result){
+            if (callback) {
+                callback(("audio/" + type + "/" + result))
+            }
+            let music = ("audio/" + type + "/" + result)
         },
         'json'
     );
 }
-async function listen() {
-    await playMusic("reveal")
-}
+let bgMusic = new Audio("audio/bg/Wii_Shop_Channel_Main_Theme_HQ.mp3")
 $(document).click(function () {
-    listen()
 })
+function playMusic(type) {
+    getMusic(type, function (music) {
+        let audio = new Audio(music)
+        $(audio).on("ended", function () {
+        })
+        audio.play()
+    })
+}
 
 // Random int
 function getRndInt(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
 function randomFile($dir = 'audio/animation') {
+}
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
