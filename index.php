@@ -42,7 +42,7 @@
                 <form>
                     <div class="gridBlock">
                         <label for="howMany">How many?</label>
-                        <input id="howMany" placeholder="0">
+                        <input id="howMany" placeholder="0" type="number">
                     </div>
                     <div id="blacklistBtn" class="gridBlock2">
                         <button id="black" class="button btn-primary" type="button">Whitelist</button>
@@ -59,6 +59,13 @@
             </div>
         </div>
     </div>
+    <div id="easterEgg">
+        <button></button>
+        <video controls>
+            <source src="greetings.mp4" type="video/mp4">
+        </video>
+    </div>
+    <p id="source"></p>
 </main>
 </body>
 <script src="script.js"></script>

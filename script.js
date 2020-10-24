@@ -1,4 +1,5 @@
 //
+let volumeLv = 0.01
 $("#seatChart").toggle()
 
 // Blacklist / whitelist btn
@@ -17,7 +18,11 @@ $blackListBtn.on('click', '#black', function () {
     $("#black").attr("id", "white").text('Blacklist');
     filterMode = blacklist
     $(".seat").css("background-color", "var(--green)")
-    filter = []
+    filter = [...Array(window.amount + 1).keys()]
+    filter.splice(0, 1)
+    filter = filter.map(function(e){
+        return e.toString()
+    });
 });
 
 
@@ -32,6 +37,7 @@ goToSeatChart.click(function () {
         let seat = $("#seatChart .inner .left")
         seat.css("grid-template-columns", "repeat(" + width +", 1fr)")
         let amount = height * width
+        window.amount = amount
         for (let i = 1; i < amount + 1; i++) {
             seat.append("<div id='" + i + "' class='seat flexbox'>" + i +"</div>")
         }
@@ -83,7 +89,6 @@ let seatHis = []
 let colors = ['218, 44, 77', '253, 126, 20', '248, 171, 55', '40, 167, 69', '36, 227, 58', '32, 201, 151', '23, 162, 184', '0, 123, 255', '102, 16, 242', '111, 66, 193', '232, 62, 140']
 
 $("body").on("click", ".seat", function () {
-    if (filterMode) {
         if (filter.indexOf(this.id) === -1) {
             $(this).css("background-color", "var(--green)")
             filter.push($(this)[0].id)
@@ -92,23 +97,9 @@ $("body").on("click", ".seat", function () {
         }
         else {
             $(this).css("background-color", "var(--white)")
-            filter.splice(filter.indexOf(this), 1)
+            filter.splice(filter.indexOf(this.id), 1)
             console.log(filter)
         }
-    }
-    else {
-        if (filter.indexOf(this.id) === -1) {
-            $(this).css("background-color", "white")
-            filter.push($(this)[0].id)
-            filter.sort()
-            console.log(filter)
-        }
-        else {
-            $(this).css("background-color", "var(--green)")
-            filter.splice(filter.indexOf(this), 1)
-            console.log(filter)
-        }
-    }
 })
 start = $("#start")
 start.click(function () {
@@ -135,6 +126,14 @@ start.click(function () {
             })
             $(audio).on("ended", async function () {
                 $(".seat").css("background-color", "var(--white)")
+                getMusic("reveal", function (music) {
+                    let audio = new Audio(music)
+                    $(audio).on("ended", function () {
+                        bgMusic.play()
+                    })
+                    audio.volume = volumeLv
+                    audio.play()
+                })
                 await sleep(1000)
                 for (let i = howMany; i !== 0; i--) {
                     let num = getRndInt(0, filter.length)
@@ -145,18 +144,12 @@ start.click(function () {
                     }
                     seatHis.push(seat)
                     $("#" + seat).css("background-color", "var(--green)")
-                    getMusic("reveal", function (music) {
-                        let audio = new Audio(music)
-                        $(audio).on("ended", function () {
-                            bgMusic.play()
-                        })
-                        audio.play()
-                    })
                 }
                 console.log(seatHis)
                 seatHis = []
             })
             bgMusic.pause()
+            audio.volume = volumeLv
             audio.play()
         })
     }
@@ -180,13 +173,20 @@ function getMusic(type, callback) {
         'json'
     );
 }
-let bgMusic = new Audio("audio/bg/Wii_Shop_Channel_Main_Theme_HQ.mp3")
-$(document).click(function () {
-    bgMusic.play()
-    bgMusic.loop = true
-})
-$(document).click(function () {
-})
+let bgMusic = new Audio("audio/bg/-Wii_Shop_Channel_Main_Theme_HQ.mp3")
+//let bgMusic = new Audio("audio/bg/bensound-jazzyfrenchy.mp3")
+if (bgMusic.src === "http://localhost/seatPicker/audio/bg/bensound-jazzyfrenchy.mp3") {
+    $("#source").append("Background music: www.bensound.com")
+}
+if (!played) {
+    var played = true
+    $(document).click(function () {
+        bgMusic.volume = volumeLv
+        bgMusic.play()
+        bgMusic.loop = true
+    })
+}
+
 function playMusic(type) {
     getMusic(type, function (music) {
         let audio = new Audio(music)
@@ -196,11 +196,23 @@ function playMusic(type) {
     })
 }
 
+
+// Easter egg
+let easterEgg = $("#easterEgg")
+let eBtn = $("#easterEgg button")
+let eVideo = $("#easterEgg video")
+eVideo.toggle()
+eBtn.click(async function () {
+    await sleep(500)
+    await bgMusic.pause()
+    await eVideo.toggle()
+    if (!eVideo.is("display:none")) alert("lol")
+})
+
+
 // Random int
 function getRndInt(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
-}
-function randomFile($dir = 'audio/animation') {
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
