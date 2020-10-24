@@ -57,6 +57,7 @@ h1 {
     - = * PropChooser * = -
 */
 #propChooser {
+    z-index: 1;
     display: flex;
     padding: 1em;
     height: 65vh; width: 50vw;
@@ -111,6 +112,7 @@ h1 {
     - = * SeatChart * = -
 */
 #seatChart {
+    z-index: 1;
     display: flex;
     padding: 1em;
     min-height: 75vh; min-width: 60vw;
@@ -251,4 +253,27 @@ h1 {
     color: var(--white);
     background: var(--gradientBlack);
     border: 2px solid var(--white);
+}
+#easterEgg {
+    position: absolute;
+    height: 100%; width: 100%;
+    display: flex;
+}
+#easterEgg button {
+    position: absolute;
+    height: 10px; width: 10px;
+    background-color: transparent;
+    border: none;
+    bottom: 10px; right: 10px;
+}
+#easterEgg video {
+    z-index: 1;
+    height: 80vh;
+    margin: auto;
+
+}
+#source {
+    position: absolute;
+    color: black;
+    top: 0;
 }

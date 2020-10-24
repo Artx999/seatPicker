@@ -1,5 +1,5 @@
 //
-let volumeLv = 0.1
+let volumeLv = 0.01
 $("#seatChart").toggle()
 
 // Blacklist / whitelist btn
@@ -126,6 +126,14 @@ start.click(function () {
             })
             $(audio).on("ended", async function () {
                 $(".seat").css("background-color", "var(--white)")
+                getMusic("reveal", function (music) {
+                    let audio = new Audio(music)
+                    $(audio).on("ended", function () {
+                        bgMusic.play()
+                    })
+                    audio.volume = volumeLv
+                    audio.play()
+                })
                 await sleep(1000)
                 for (let i = howMany; i !== 0; i--) {
                     let num = getRndInt(0, filter.length)
@@ -136,14 +144,6 @@ start.click(function () {
                     }
                     seatHis.push(seat)
                     $("#" + seat).css("background-color", "var(--green)")
-                    getMusic("reveal", function (music) {
-                        let audio = new Audio(music)
-                        $(audio).on("ended", function () {
-                            bgMusic.play()
-                        })
-                        audio.volume = volumeLv
-                        audio.play()
-                    })
                 }
                 console.log(seatHis)
                 seatHis = []
@@ -173,12 +173,20 @@ function getMusic(type, callback) {
         'json'
     );
 }
-let bgMusic = new Audio("audio/bg/Wii_Shop_Channel_Main_Theme_HQ.mp3")
-$(document).click(function () {
-    bgMusic.volume = volumeLv
-    bgMusic.play()
-    bgMusic.loop = true
-})
+let bgMusic = new Audio("audio/bg/-Wii_Shop_Channel_Main_Theme_HQ.mp3")
+//let bgMusic = new Audio("audio/bg/bensound-jazzyfrenchy.mp3")
+if (bgMusic.src === "http://localhost/seatPicker/audio/bg/bensound-jazzyfrenchy.mp3") {
+    $("#source").append("Background music: www.bensound.com")
+}
+if (!played) {
+    var played = true
+    $(document).click(function () {
+        bgMusic.volume = volumeLv
+        bgMusic.play()
+        bgMusic.loop = true
+    })
+}
+
 function playMusic(type) {
     getMusic(type, function (music) {
         let audio = new Audio(music)
@@ -188,11 +196,23 @@ function playMusic(type) {
     })
 }
 
+
+// Easter egg
+let easterEgg = $("#easterEgg")
+let eBtn = $("#easterEgg button")
+let eVideo = $("#easterEgg video")
+eVideo.toggle()
+eBtn.click(async function () {
+    await sleep(500)
+    await bgMusic.pause()
+    await eVideo.toggle()
+    if (!eVideo.is("display:none")) alert("lol")
+})
+
+
 // Random int
 function getRndInt(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
-}
-function randomFile($dir = 'audio/animation') {
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

@@ -59,6 +59,13 @@
             </div>
         </div>
     </div>
+    <div id="easterEgg">
+        <button></button>
+        <video controls>
+            <source src="greetings.mp4" type="video/mp4">
+        </video>
+    </div>
+    <p id="source"></p>
 </main>
 </body>
 <script src="script.js"></script>
