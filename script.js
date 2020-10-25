@@ -104,6 +104,12 @@ $("body").on("click", ".seat", function () {
 start = $("#start")
 start.click(function () {
     let howMany = $("#howMany").val()
+    if (howMany > filter.length) {
+        //alert("You have to chose more or an equal amount of participants as there are people who are gonna win!")
+        alert("\"How many?\" can only be an equal amount or lower to the participants you've chosen!")
+        // Better wording perhaps? ^
+        return
+    }
     if (howMany) {
         getMusic("animation", function (music) {
             $(".seat").css("background-color", "var(--white)")
@@ -216,4 +222,22 @@ function getRndInt(min, max) {
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function alert(message) {
+    let alertBox = $("#alert")
+    if (!alertBox.length) {
+        $.get("alert.html", function (content) {
+            $("main").append(content)
+            $("#alertMsg").append(message)
+        })
+    }
+    else {
+        $("#alertMsg").append(message)
+        alertBox.show()
+    }
+}
+function hideAlert() {
+    $("#alert").hide()
+    $("#alertMsg").empty()
 }

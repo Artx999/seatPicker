@@ -277,3 +277,38 @@ h1 {
     color: black;
     top: 0;
 }
+#alert {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+.modal {
+    position: relative;
+    padding: 6em 14em;
+    border-radius: 4px;
+    background-color: #0c0c0d;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 11;
+}
+.modal h1 {
+    color: #ffffff;
+}
+#alertMsg {
+    max-width: 40vw;
+    text-align: center;
+    margin-bottom: 1em;
+}
+#overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    position: absolute;
+    z-index: 10;
+}
