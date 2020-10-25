@@ -35,7 +35,7 @@
         </form>
     </div>
     <div id="seatChart">
-        <h1>Pick seats between?</h1>
+        <h1>Pick your seats</h1>
         <div class="inner">
             <div class="left"></div>
             <div class="right">
